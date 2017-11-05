@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse navebar-fixed-top" style="margin-bottom:0">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target="#response-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="javascript:;" class="navbar-brand">银泰网后台管理系统</a>
+		</div>
+		<div class="collapse navbar-collapse" id="response-navbar">
+			<ul class="nav navbar-nav">
+				<li class="<%= page==='home' ? 'active' : '' %>">
+					<a href="/home.html">首页</a>
+				</li>
+				<li class="<%= page==='hot' ? 'active' : '' %>">
+					<a href="/hot.html">抢先</a>
+				</li>
+				<li class="<%= page==='classify' ? 'active' : '' %>">
+					<a href="/classify.html">分类</a>
+				</li>
+				<li class="<%= page==='shopping' ? 'active' : '' %>">
+					<a href="/shopping.html">购物车</a>
+				</li>
+				<li class="<%= page==='mine' ? 'active' : '' %>">
+					<a href="/mine.html">我的</a>
+				</li>
+				<li class="<%= page==='details' ? 'active' : '' %>">
+					<a href="/details.html">详情</a>
+				</li>
+				<li class="<%= page==='search' ? 'active' : '' %>">
+					<a href="/search.html">搜索</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">你好, <span id="js-username"><%= name %></span></a></li>
+          		<li id="js-logout"><a href="javascript:;">注销</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
