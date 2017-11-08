@@ -1,0 +1,66 @@
+<div class="container" style="margin-top:20px;">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#top-bar" aria-controls="top-bar" role="tab" data-toggle="tab">导航</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">商品</a></li>
+    <!--<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>-->
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="top-bar">
+    	<table class="table table-striped">
+					<caption><h4 style="display:inline-block;color:#AC2925;">导航信息管理</h4>
+					<button class="btn btn-primary pull-right" id="add-btn" data-toggle = "modal" data-target="#addtab">添加</button>
+					</caption>
+					<thead>
+						<tr>
+							<th>序号</th>
+		          <th>导航名称</th>
+		          <th>类型序号</th>
+		          <th>导航修改</th>
+		          <th>导航删除</th>
+						</tr>
+					</thead>
+					<tbody id="list-con">
+					</tbody>
+		</table>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">..</div>
+    <!--<div role="tabpanel" class="tab-pane" id="messages">..</div>
+    <div role="tabpanel" class="tab-pane" id="settings">..</div>-->
+  </div>
+
+</div>
+<div class="modal fade" id="addtab">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				 <button  class="close" data-dismiss="modal">&times;</button>
+        		<h4 class="modal-title">导航信息</h4>
+      		</div>
+      		<div class="modal-body">
+      			<form action="" id="btnsubmitForm">
+					  <input type="hidden" id="jobid" name="jobid"/>
+						  <div class="form-group">
+						    <label for="">导航名称</label>
+						    <input type="text" class="form-control" name="argaintagname" id="argaintagname" placeholder="请输入导航名称">
+						  </div>
+					  <div class="form-group">
+					    <label for="">类型序号</label>
+					    <input type="text" class="form-control" name="argaintagtype" id="argaintagtype" placeholder="请输入类型序号">
+					  </div>
+				</form>
+				</div>
+				<div class="modal-footer">
+				  <button type="submit" class="btn btn-default" id="btndig">提交</button>
+				</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#myTabs a').click(function (e) {
+	  	e.preventDefault()
+	  	$(this).tab('show')
+	})
+</script>

@@ -1,0 +1,13 @@
+<% for(var i = 0; i< tablist.length;i++){%>
+<tr tabid ="<%=tablist[i]._id%>" id="tabid">
+	<td><%=i+1%></td>
+	<td><%=tablist[i].argaintagname%></td>
+	<td><%=tablist[i].argaintagtype%></td>
+	<td>
+		<button class="btn btn-warning" id="upt">修改</button>
+	</td>
+	<td>
+		<button class="btn btn-danger" id="del">删除</button>
+	</td>
+</tr>
+<%}%>
