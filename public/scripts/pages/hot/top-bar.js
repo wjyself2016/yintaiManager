@@ -2,6 +2,7 @@ var TopBar = function(container){
 	this.container = container || $(body);
 	this.init();
 	this.page = 'hot';
+	this.res='';
 }
 
 $.extend(TopBar.prototype,{
@@ -9,23 +10,31 @@ $.extend(TopBar.prototype,{
 		this.getTab();
 	},
 	createDom:function(tablist){
+		console.log(tablist)
 		let html = new EJS({url:'/views/hot/top-bar.ejs'}).render({
-			tablist
+			tablist:tablist.result,
+			pageNumber:tablist.pageNumber
 		});
 		this.container.html(html);
-
 	},
 	bindEvents:function(){
 		$('#list-con').on('click',$.proxy(this.handleUptOrDel,this));
 	},
-	getTab:function(){
+	getTab:function(res){
+		if(res){
+			this.res = res.Currentpageno
+		}
 		$.ajax({
 			url:'api/hot/getTab',
+			data:{
+				pageNo:this.res || 1
+			},
 			success:$.proxy(this.handleRenderTab,this)
 		})
 	},
 	handleRenderTab:function(res){
-		this.createDom(res.data);	
+		this.createDom(res.data);
+		$(this).trigger(new $.Event('listdata',{res}));
 		this.bindEvents();
 	},
 	handleUptOrDel:function(e){

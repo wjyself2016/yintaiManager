@@ -24,11 +24,21 @@ $.extend(Hot.prototype,{
 		new Slide();
 		this.argaintagname = $('#argaintagname');
 		this.argaintagtype = $('#argaintagtype');
-		const topbar = new TopBar($('#list-con'));
-		$(topbar).on('getdata',$.proxy(this.handlegedata,this))
+		this.topbar = new TopBar($('#list-con'));
+		$(this.topbar).on('getdata',$.proxy(this.handlegedata,this));
+		$(this.topbar).on('listdata',$.proxy(this.handlelistdata,this));
+		
 	},
 	handlegedata:function(res){
 		this.getid = res.res[0]._id;
+	},
+	handlelistdata:function(res){
+		const pagination = new Pagination(res.res.data);
+		$(pagination).on('Pagdata',$.proxy(this.handlePagination,this));
+		
+	},
+	handlePagination:function(res){
+		this.topbar.getTab(res);
 	},
 	bindEvents:function(){
 		$('#btndig').on('click',$.proxy(this.handleAddTab,this))

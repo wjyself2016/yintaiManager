@@ -13,8 +13,9 @@ router.get('/users/logout',userController.logout)
 
 /**************************hot******************************/
 router.post('/hot/tab', hotController.addOrUptTab);
-router.get('/hot/getTab', hotController.getTab);
+router.get('/hot/getTab', hotController.getLaterTab);
 router.get('/hot/delTab', hotController.delTab);
 router.get('/hot/uptTab', hotController.uptTab);
+router.get('/Services/Proxy.ashx/tab',hotController.getTab)
 
 module.exports = router
