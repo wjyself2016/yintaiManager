@@ -1,0 +1,24 @@
+<% if (banlist.length > 0) { %>
+  <% for (var i = 0; i < banlist.length; i++) {%>
+    <tr banid="<%= banlist[i]._id %>">
+      <td><%= i+1 %></td>
+      <td><img src="<%= 'upload/' + banlist[i].imgurl %>" alt="" width="100" height="50"></td>
+      <td><%= banlist[i].imgname %></td>
+      <td><%= banlist[i].sort %></td>
+      <td><%= banlist[i].updatetime %></td>
+      <td>
+        <button type="button" data-tag="update" id='update' class="btn btn-info">修改</button>
+        <button type="button" data-tag="delete" id='delete' class="btn btn-danger">删除</button>
+      </td>
+      
+    </tr>
+   
+				
+<%
+  }
+} else {
+%>
+<tr>
+  <td colspan="8"> 暂无数据 </td>
+</tr>
+<% } %>
