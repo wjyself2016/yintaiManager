@@ -1,0 +1,22 @@
+<% if (data.result.length > 0) { %>
+	<% for (var i = 0; i < data.result.length; i++) {%>
+	<tr classifyBrandId="<%= data.result[i]._id %>">
+	  <td><%= i+1 %></td>
+	  <td><%= data.result[i].categoryId %></td>
+	  <td><%= data.result[i].brandId %></td>
+	  <td><img src="<%= 'images/classifyBrand/' + data.result[i].img %>" width="50" height="50"></td>
+	  <td><%= data.result[i].name %></td>
+	  <td><%= data.result[i].filterId %></td>
+	  <td>
+	  	<button class="btn btn-primary update">修改</button>
+	  	<button class="btn btn-danger delete">删除</button>
+	  </td>
+	</tr>
+<%
+  }
+} else {
+%>
+<tr>
+  <td colspan="7"> 暂无数据 </td>
+</tr>
+<% } %>

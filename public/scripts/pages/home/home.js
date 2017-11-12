@@ -19,7 +19,6 @@ $.extend(Home.prototype,{
 	},
 	createDom:function(name){
 		new Header(name,this.page);
-		new Body();
 	}
 	
 	

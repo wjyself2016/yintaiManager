@@ -1,0 +1,19 @@
+<% if (data.result.length > 0) { %>
+	<% for (var i = 0; i < data.result.length; i++) {%>
+	<tr classifyNavId="<%= data.result[i]._id %>">
+	  <td><%= i+1 %></td>
+	  <td><%= data.result[i].itemId %></td>
+	  <td><%= data.result[i].classify %></td>
+	  <td>
+	  	<button class="btn btn-primary update">修改</button>
+	  	<button class="btn btn-danger delete">删除</button>
+	  </td>
+	</tr>
+<%
+  }
+} else {
+%>
+<tr>
+  <td colspan="4"> 暂无数据 </td>
+</tr>
+<% } %>
