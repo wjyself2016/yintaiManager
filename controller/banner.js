@@ -1,5 +1,5 @@
 const ban=require('../model/banner.js');
-const {getProList,getParam}=require('../utils/utils-in.js')
+const {getBanList,getProList,getParam}=require('../utils/utils-in.js')
 const async=require('async');
 const fs=require('fs');
 
@@ -24,19 +24,20 @@ const getList=function(req,res,next){
 	    }
 		], function(err, results) {
 		    let page = {
-		      result: results[1],
+		      bannerlist: results[1],
 		      pageCount: Math.ceil(results[0] / pageSize),
 		      pageNo: parseInt(pageNo, 10)
 		    }
-		    res.json(getProList(page))
+		    res.json(getBanList(page))
 	})
 }
 
 const addOrUpdate=function(req,res,next){
-	const {imgname} =req.body;
+	const {imgname,sort} =req.body;
 	if(req.body.banid){
 		const setObj={
-			imgname
+			imgname,
+			sort
 		}
 		if(req.file&&req.file.filename){
 			setObj.imgurl=req.file.filename;
@@ -94,8 +95,8 @@ const searchByName=function(req,res,next){
 	const { imgNa }=req.query;
 	const re=new RegExp(`${imgNa}`);
 	ban.find({'imgname':re})
-		.then((result)=>{
-			res.json(getProList({result}));
+		.then((bannerlist)=>{
+			res.json(getBanList({bannerlist}));
 		})
 }
 

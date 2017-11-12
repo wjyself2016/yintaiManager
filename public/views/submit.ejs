@@ -1,0 +1,33 @@
+<div class="modal-dialog modal-md">
+	<div class="modal-content">
+	  <div class="modal-header">
+	    <button class="close" data-dismiss="modal">&times;</button>
+	    <h4>商品信息</h4>
+	  </div>
+	  <div class="modal-body">
+	    <form action="/api/pro/addOrUpdate" method="post" enctype="multipart/form-data" id="postJobForm">
+	  	  <input type="hidden" id="proid" name="proid" value="">
+	      <div id="updateLogo"></div>
+	      <div class="form-group">
+	        <label for="logo">商品图片</label>
+	        <input type="file" accept="image/png,image/gif,image/jpeg" class="form-control" name="image" id="image" placeholder="请上传商品图片">
+	      </div>
+	      <div class="form-group">
+	        <label for="positionName">商品名</label>
+	        <input type="text" class="form-control" name="proname" id="proname" placeholder="请输入商品名">
+	      </div>
+	      <div class="form-group">
+	        <label for="companyName">商品原价格</label>
+	        <input type="text" class="form-control" name="proprice" id="proprice" placeholder="请输入商品原价格">
+	      </div>
+	      <div class="form-group">
+	        <label for="companyName">本网站价格</label>
+	        <input type="text" class="form-control" name="yt_price" id="yt_price" placeholder="请输入本网站价格">
+	      </div>
+	    </form>
+	  </div>
+	  <div class="modal-footer">
+	    <button id="submitBtn" class="btn btn-primary">提交</button>
+	  </div>
+	</div>
+  </div>

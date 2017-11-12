@@ -16,9 +16,21 @@ module.exports = {
       "state": 1
   	}
   },
-  getBanList:function(){
+  getBanList:function(data){
   	return{
-  		
+  		 "isSuccessful": true,
+		   "statusCode": 200,
+		   "data": data
+	  }
+  },
+  getProductList:function(data){
+  	return{
+  		"data": data,
+  		"record_count":110,
+			"description":"",
+			"isSuccessful":true,
+			"statusCode":200,
+			"userId":''
   	}
   }
 }

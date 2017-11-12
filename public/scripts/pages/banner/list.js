@@ -26,10 +26,10 @@ $.extend(banList.prototype,{
 	handleGetbanList:function(res){
 		const ejs=new EJS({url:'../../../views/banlist.ejs'});
 		let html=ejs.render({
-			banlist:res.content.data.result
+			banlist:res.data.bannerlist
 		})
 		this.container.html(html);
-		$(this).trigger(new $.Event('getpage', res.content.data));
+		$(this).trigger(new $.Event('getpage', res.data));
 	},
 	bindEvents:function(){
 		$('#list-con').on('click',this.handleManban.bind(this));
@@ -95,10 +95,10 @@ $.extend(banList.prototype,{
 	handleaddban:function(){
    		$('#addOrUpdateDialog').modal('show');
    		$('#submitBanBtn').on('click',this.handleSubmitForm.bind(this));
-   		$('#updateLogo').html('')
-	    $('#jobid').val('')
-	    $('#proname').val('')
-	    $('#proprice').val('')
+   		$('#updateimg').html('')
+	    $('#banid').val('')
+	    $('#imgname').val('')
+	    $('#sort').val('0')
 	},
 	
 	handleManban:function(e){
@@ -149,5 +149,6 @@ $.extend(banList.prototype,{
         $('#banid').val(res.data._id);
    	 	$('#updateimg').html(`<img src=/upload/${res.data.imgurl} width=100 height=50 />`)
 		$('#imgname').val(res.data.imgname);
+		$('#sort').val(res.data.sort);
 	}
 })

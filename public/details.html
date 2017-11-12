@@ -8,11 +8,83 @@
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+	  <div class="container" style="margin-top: 70px;">
+		    <table class="table table-hover">
+		      <caption>
+		        <div class="col-md-3">商品管理</div>
+				<div class="col-md-3 ">
+				    <div class="input-group">
+				      <input type="text" class="form-control" id="searchval" placeholder="Search for..." value="">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button" id="search-btn">搜索</button>
+				      </span>
+				    </div><!-- /input-group -->
+				</div><!-- /.col-lg-6 -->
+				<div class="col-md-3 col-md-offset-3">
+					<button id="add-pros" class="btn btn-primary">添加</button>
+			        <div class="btn-group">
+					  <button type="button" id="selec-val" class="btn btn-danger">升序</button>
+					  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    <span class="caret"></span>
+					    <span class="sr-only">Toggle Dropdown</span>
+					  </button>
+					  <ul class="dropdown-menu" id="dropdown">
+					    <li><a href="javascript:;">升序</a></li>
+					    <li><a href="javascript:;">降序</a></li>
+					  </ul>
+					</div>
+				</div>
+		      </caption>
+		      <thead>
+		        <tr>
+		          <th>序号</th>
+		          <th>商品图片</th>
+		          <th>商品名称</th>
+		          <th>商品原价格</th>
+		          <th>本网站价格</th>
+		          <th>操作</th>
+		        </tr>
+		      </thead>
+		      <tbody id="list-con">
+		      	
+		      </tbody>
+		    </table>
+		    <nav aria-label="Page navigation" class="col-md-3 col-md-offset-9">
+		      <ul class="pagination" id="paginationCon">
+		
+		      </ul>
+		    </nav>
+			<div class="modal fade" id="addOrUpdateDialog"></div>
 	
-	<script src="/scripts/base/jquery.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="/scripts/base/ejs.js"></script>
-	<script src="scripts/common/header.js"></script>
-	<script src="scripts/pages/details/details.js"></script>
+		</div>
+		<!-- 确认删除按钮 -->
+		<div id="isdelete" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		  <div class="modal-dialog modal-sm" role="document">
+		    <div class="modal-content">
+		  	 <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>确定要删除吗&hellip;</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" id="del-true" data-tag="del-true">确定</button>
+		      </div>     
+		    </div>
+		  </div>
+	    </div>
+		<script src="/scripts/base/jquery.js"></script>
+ 		<script src="/scripts/base/bootstrap.js"></script>
+  		<script src="/scripts/base/ejs.js"></script>
+  		<script src="/scripts/common/header.js"></script>
+		<script src="/scripts/pages/details/list.js"></script>
+		<script src="/scripts/pages/details/index.js"></script>
+		<script src="/scripts/pages/details/pagination.js"></script>
+		<script src="/scripts/pages/details/submit.js"></script>
+		<script>
+		    new Page('details')
+		</script>
 </body>
 </html>
