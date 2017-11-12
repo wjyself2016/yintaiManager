@@ -1,9 +1,9 @@
-var Hot = function(){
+var Hotpro = function(){
 	this.init();
 	this.page = 'hot';
 }
 
-$.extend(Hot.prototype,{
+$.extend(Hotpro.prototype,{
 	init:function(){
 		this.getid="";
 		$.ajax({
@@ -20,22 +20,19 @@ $.extend(Hot.prototype,{
 		});
 	},
 	createDom:function(name){
-		new Header(name,this.page);
-		new Slide();
 		this.argaintagname = $('#argaintagname');
 		this.argaintagtype = $('#argaintagtype');
 		this.topbar = new TopBar($('#list-con'));
 		$(this.topbar).on('getdata',$.proxy(this.handlegedata,this));
 		$(this.topbar).on('listdata',$.proxy(this.handlelistdata,this));
 		$.ajax({
-			url:'/api/Services/Proxy.ashx/tab',
+			url:'/api/Services/Proxy.ashx/Hots',
 			success:(result)=>{
 				var socket = io('http://localhost:9001');
 				socket.emit('update',{res:result.data})			
 			}
 		})
-
-		
+		this.bindEvents();
 	},
 	handlegedata:function(res){
 		this.getid = res.res[0]._id;
@@ -46,28 +43,17 @@ $.extend(Hot.prototype,{
 		
 	},
 	handlePagination:function(res){
-		this.topbar.getTab(res);
+		this.topbar.getHots(res);
 	},
 	bindEvents:function(){
-		$('#btndig').on('click',$.proxy(this.handleAddTab,this))
+		$('#btndig-pro').on('click',$.proxy(this.handlesubmit,this));
 	},
-	handleAddTab:function(){
-		$.ajax({
-			url:'api/hot/tab',
-			method:'post',
-			contentType:'application/json;charset=utf-8',
-			data:JSON.stringify({
-				 argaintagname:this.argaintagname.val(), 
-				 argaintagtype:Number(this.argaintagtype.val()),
-			     _id:this.getid
-			}),
-			
-			success:$.proxy(this.isgetaddtab,this)
-		})
-	
+	handlesubmit:function(){
+		console.log(1)
+		$('#btnsubmitFormpro').submit();
 	},
-	isgetaddtab:function(res){
-		if(res.addTabSuccess){
+	isgetaddHots:function(res){
+		if(res.addHotsSuccess){
 			this.isaddOrUpdate("添加成功");
 			
 		}else{
@@ -83,9 +69,9 @@ $.extend(Hot.prototype,{
 		alert(name);
 		$('#argaintagname').val('');
 		$('#argaintagtype').val('');
-		$("#addtab").modal('hide');
-		window.location.reload()
+		$("#addHots").modal('hide');
+//		window.location.reload()
 	}
 });
 
-new Hot();
+new Hotpro();

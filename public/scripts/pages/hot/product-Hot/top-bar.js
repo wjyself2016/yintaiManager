@@ -1,52 +1,51 @@
-var TopBar = function(container){
+var TopHots = function(container){
 	this.container = container || $(body);
 	this.init();
 	this.page = 'hot';
 	this.res='';
 }
 
-$.extend(TopBar.prototype,{
+$.extend(TopHots.prototype,{
 	init:function(){
-		this.getTab();
+		this.getHots();
 	},
-	createDom:function(tablist){
+	createDom:function(Hotslist){
+		console.log(Hotslist)
 		let html = new EJS({url:'/views/hot/top-bar.ejs'}).render({
-			tablist:tablist.result,
-			pageNumber:tablist.pageNumber
+			Hotslist:Hotslist.result,
+			pageNumber:Hotslist.pageNumber
 		});
 		this.container.html(html);
-
 	},
 	bindEvents:function(){
 		$('#list-con').on('click',$.proxy(this.handleUptOrDel,this));
 	},
-	getTab:function(res){
+	getHots:function(res){
 		if(res){
 			this.res = res.Currentpageno
 		}
 		$.ajax({
-			url:'api/hot/getTab',
+			url:'api/hot/getHots',
 			data:{
 				pageNo:this.res || 1
 			},
-			success:$.proxy(this.handleRenderTab,this)
+			success:$.proxy(this.handleRenderHots,this)
 		})
 	},
-	handleRenderTab:function(res){
+	handleRenderHots:function(res){
 		this.createDom(res.data);
 		$(this).trigger(new $.Event('listdata',{res}));
 		this.bindEvents();
 	},
 	handleUptOrDel:function(e){
 		if($(e.target).attr('id') == "del"){
-			
-			const tabid = $(e.target).closest('tr').attr('tabid');
 			const goback = confirm("是否删除");
+			const Hotsid = $(e.target).closest('tr').attr('Hotsid');
 			if(goback){
 				$.ajax({
-					url:'api/hot/delTab',
+					url:'api/hot/delHots',
 					data:{
-						_id:tabid
+						_id:Hotsid
 					},
 					success:(res)=>{
 						window.location.reload()
@@ -55,12 +54,12 @@ $.extend(TopBar.prototype,{
 			}
 		}
 		if($(e.target).attr('id') == "upt"){
-			const tabid = $(e.target).closest('tr').attr('tabid');
-			$('#addtab').modal('show');
+			const Hotsid = $(e.target).closest('tr').attr('Hotsid');
+			$('#addHots').modal('show');
 			$.ajax({
-				url:'api/hot/uptTab',
+				url:'api/hot/uptHots',
 				data:{
-					_id:tabid
+					_id:Hotsid
 				},
 				success:(res)=>{
 					$('#argaintagname').val(res[0].argaintagname);
@@ -72,4 +71,3 @@ $.extend(TopBar.prototype,{
 		}
 	}
 });
-
