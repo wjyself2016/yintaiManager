@@ -24,4 +24,4 @@ app.use(cookieSession({
 app.use('/api', apiRoute)
 
 //监听端口号
-app.listen(process.env.PORT || '8585','10.9.164.53')
+app.listen(process.env.PORT || '3333','10.9.164.13')
