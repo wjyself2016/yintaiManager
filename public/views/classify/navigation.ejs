@@ -1,0 +1,13 @@
+<li pageno="<%= data.pageNo > 1 ? data.pageNo-1 : 1 %>">
+	<a href="javascript:;" aria-label="Previous">
+		<span aria-hidden="true">&laquo;</span>
+	</a>
+</li>
+<% for(var i=1;i<=data.pageCount;i++){ %>
+<li pageno="<%= i %>" class="<%= data.pageNo == i?'active':'' %>"><a href="javascript:;"><%=i%></a></li>
+<% } %>
+<li  pageno="<%= data.pageNo < data.pageCount ? data.pageNo + 1 : data.pageCount %>">
+  	<a href="javascript:;" aria-label="Next">
+    	<span aria-hidden="true">&raquo;</span>
+  	</a>
+</li>
