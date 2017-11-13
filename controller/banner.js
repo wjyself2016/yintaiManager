@@ -31,6 +31,11 @@ const getList=function(req,res,next){
 		    res.json(getBanList(page))
 	})
 }
+const getListFront=function(req,res){
+	ban.find({},function(err,bannerlist){
+		res.json(getBanList({bannerlist}))
+	})
+}
 
 const addOrUpdate=function(req,res,next){
 	const {imgname,sort} =req.body;
@@ -100,4 +105,4 @@ const searchByName=function(req,res,next){
 		})
 }
 
-module.exports={ getList,addOrUpdate,getdelete,searchListid,searchByName}
+module.exports={ getList,addOrUpdate,getdelete,searchListid,searchByName,getListFront}

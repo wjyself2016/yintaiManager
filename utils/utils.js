@@ -19,6 +19,15 @@ module.exports = {
       isSuccessful:true,
       statusCode:200,
       userId:''
+   }
+	},
+  getParam: function (data) {
+    return {
+        "isSuccessful": true,
+	    "statusCode": 200,
+	    "description": "",
+	    "userId": "",
+	    "data": data
     }
   }
 }

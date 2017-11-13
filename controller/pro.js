@@ -31,6 +31,11 @@ const getList=function(req,res,next){
 		    res.json(getProductList(page))
 	})
 }
+const getListFront=function(req,res){
+	pro.find({},function(err,productlist){
+		res.json(getProductList({productlist}))
+	})
+}
 
 const addOrUpdate=function(req,res,next){
 	console.log(req.body);
@@ -103,4 +108,4 @@ const searchByName=function(req,res,next){
 			res.json(getProductList({productlist}));
 		})
 }
-module.exports={getList,addOrUpdate,getdelete,searchListid,searchByName}
+module.exports={getList,addOrUpdate,getdelete,searchListid,searchByName,getListFront}

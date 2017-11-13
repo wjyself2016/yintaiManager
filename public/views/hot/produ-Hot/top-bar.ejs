@@ -1,0 +1,18 @@
+<% for(var i = 0; i< Hotslist.length;i++){%>
+<tr Hotsid ="<%=Hotslist[i]._id%>" id="Hotsid">
+	<td><%= pageNumber+i  %></td>
+	<td><img src="../.././upload/hotimg/<%=Hotslist[i].logoimage%>" width="80" height="50"/></td>
+	<td><%=Hotslist[i].brandname%></td>
+	<td><%=Hotslist[i].brandname%></td>
+	<td><%=Hotslist[i].discount%></td>
+	<td><%=Hotslist[i].name%></td>
+	<td><%=Hotslist[i].starttime%></td>
+	<td><%=Hotslist[i].endtime%></td>
+	<td>
+		<button class="btn btn-warning" id="uptpro">修改</button>
+	</td>
+	<td>
+		<button class="btn btn-danger" id="delpro">删除</button>
+	</td>
+</tr>
+<%}%>

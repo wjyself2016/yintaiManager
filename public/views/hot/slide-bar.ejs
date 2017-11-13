@@ -1,0 +1,142 @@
+<div class="container" style="margin-top:20px;">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#top-bar" aria-controls="top-bar" role="tab" data-toggle="tab">导航</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">商品</a></li>
+    <!--<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>-->
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="top-bar">
+    	<table class="table table-striped">
+					<caption><h4 style="display:inline-block;color:#AC2925;">导航信息管理</h4>
+					<button class="btn btn-primary pull-right" id="add-btn" data-toggle = "modal" data-target="#addtab">添加</button>
+					</caption>
+					<thead>
+						<tr>
+							<th>序号</th>
+		          <th>导航名称</th>
+		          <th>类型序号</th>
+		          <th>导航修改</th>
+		          <th>导航删除</th>
+						</tr>
+					</thead>
+					<tbody id="list-con">
+					</tbody>
+		</table>
+		<div class="row">
+			<nav aria-label="Page navigation" class="col-md-12 pull-right">
+			  <ul class="pagination" id="pagination">
+			   
+			  </ul>
+			</nav>
+		</div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+    		<table class="table table-striped">
+					<caption><h4 style="display:inline-block;color:#AC2925;">抢先信息管理</h4>
+					<button class="btn btn-primary pull-right" id="add-btn" data-toggle = "modal" data-target="#addprodu">添加</button>
+					</caption>
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>商品图片</th>
+		          <th>品牌</th>
+		          <th>打折</th>
+							<th>商品信息</th>
+		          <th>结束时间</th>
+		          <th>导航修改</th>
+		          <th>导航删除</th>
+						</tr>
+					</thead>
+					<tbody id="list-con-pro">
+					</tbody>
+		</table>
+		<div class="row">
+			<nav aria-label="Page navigation" class="col-md-12 pull-right">
+			  <ul class="pagination" id="pagination-pro">
+			   
+			  </ul>
+			</nav>
+		</div>
+    </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal fade" id="addtab">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				 <button  class="close" data-dismiss="modal">&times;</button>
+        		<h4 class="modal-title">导航信息</h4>
+      		</div>
+      		<div class="modal-body">
+      			<form action="" id="btnsubmitForm">
+					  <input type="hidden" id="jobid" name="jobid"/>
+						  <div class="form-group">
+						    <label for="">导航名称</label>
+						    <input type="text" class="form-control" name="argaintagname" id="argaintagname" placeholder="请输入导航名称">
+						  </div>
+					  <div class="form-group">
+					    <label for="">类型序号</label>
+					    <input type="text" class="form-control" name="argaintagtype" id="argaintagtype" placeholder="请输入类型序号">
+					  </div>
+				</form>
+				</div>
+				<div class="modal-footer">
+				  <button type="submit" class="btn btn-default" id="btndig">提交</button>
+				</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="addprodu">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				 <button  class="close" data-dismiss="modal">&times;</button>
+        		<h4 class="modal-title">抢先商品信息</h4>
+      		</div>
+      		<div class="modal-body">
+      			<form action="/api/hot/Hots" id="btnsubmitFormPro" method="post" enctype="multipart/form-data">
+					  <input type="hidden" id="Hotid" name="Hotid"/>                                                                                                                                                                                 
+						  <div class="form-group">
+						    <label for="">商品图片</label>
+						    <div id="updateLogo"></div>
+						    <input type="file" class="form-control" name="logoimage" id="logoimage" placeholder="请选择图片">
+						  </div>
+					  <div class="form-group">
+					    <label for="">品牌</label>
+					    <input type="text" class="form-control" name="brandname" id="brandname" placeholder="请输入品牌信息">
+					  </div>
+					  <div class="form-group">
+					    <label for="">打折</label>
+					    <input type="text" class="form-control" name="discount" id="discount" placeholder="请输入类型序打折信息">
+					  </div>
+					  <div class="form-group">
+					    <label for="">商品信息</label>
+					    <input type="text" class="form-control" name="name" id="name" placeholder="请输入类型序号">
+					  </div>
+					  <div class="form-group">
+					    <label for="">开始时间</label>
+					    <input type="text" class="form-control" name="starttime" id="starttime" placeholder="请输入类型序号">
+					  </div>
+					  <div class="form-group">
+					    <label for="">结束时间</label>
+					    <input type="text" class="form-control" name="endtime" id="endtime" placeholder="请输入类型序号">
+					  </div>
+				</form>
+				</div>
+				<div class="modal-footer">
+				  <button type="submit" class="btn btn-default" id="btndig-pro">提交</button>
+				</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#myTabs a').click(function (e) {
+	  	e.preventDefault()
+	  	$(this).tab('show')
+	})
+</script>
