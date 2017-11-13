@@ -17,11 +17,16 @@ router.post('/pro/addOrUpdate', upload.single('image') , proController.addOrUpda
 router.get('/pro/delete',proController.getdelete)
 router.get('/pro/searchlistid',proController.searchListid)
 router.get('/pro/search',proController.searchByName)
+
+router.get('/pro/listfronthot',proController.getListhot)
+router.get('/pro/listfront',proController.getListFront)
 //轮播图相关
 router.get('/ban/list',banController.getList)
 router.post('/ban/addOrUpdate', upload.single('banimg') , banController.addOrUpdate)
 router.get('/ban/delete',banController.getdelete)
 router.get('/ban/searchlistid',banController.searchListid)
+
+router.get('/ban/listfront',banController.getListFront)
 //搜索
 router.get('/ban/search',banController.searchByName)
 

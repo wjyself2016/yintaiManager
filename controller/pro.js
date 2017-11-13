@@ -1,5 +1,5 @@
 const pro=require('../model/pro.js');
-const {getProductList,getParam}=require('../utils/utils-in.js')
+const {getpro,getProductList,getParam}=require('../utils/utils-in.js')
 const async=require('async');
 const fs=require('fs');
 
@@ -31,7 +31,41 @@ const getList=function(req,res,next){
 		    res.json(getProductList(page))
 	})
 }
-
+const getListFront=function(req,res){
+	pro.find({},function(err,productlist){
+		res.json(getProductList({productlist}))
+	})
+}
+const getListhot=function(req,res){
+	pro.find({},function(err,productlist){
+		res.json(getpro({productlist}))
+	})
+}
+/*const getListFront=function(req,res){
+	let Size=2;
+	let number=1;
+	async.parallel([
+	    function(callback) {
+	    	pro.find({})
+	    	  .then((all)=>{
+	    	  	callback(null,all.length);
+	    	  })
+	    },
+	    function(callback) {
+	    	pro.find({})
+	    	  .skip((number-1)*Size)
+	   	 	  .limit(Size)
+	   	 	  .then((result)=>{
+	   	 	  	callback(null, result)
+	   	 	  })
+	    }
+		], function(err, results) {
+		    let page = {
+		      items: results[1]
+		    }
+		    res.json(getPro(page))
+	})
+}*/
 const addOrUpdate=function(req,res,next){
 	console.log(req.body);
 	const {proname,proprice,yt_price} =req.body;
@@ -103,4 +137,4 @@ const searchByName=function(req,res,next){
 			res.json(getProductList({productlist}));
 		})
 }
-module.exports={getList,addOrUpdate,getdelete,searchListid,searchByName}
+module.exports={getList,addOrUpdate,getdelete,searchListid,searchByName,getListFront,getListhot}
